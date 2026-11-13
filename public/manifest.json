@@ -1,0 +1,16 @@
+{
+  "short_name": "NestMate AI",
+  "name": "NestMate AI — Verified Flatmate Discovery & Co-Living OS",
+  "icons": [
+    {
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAJoplsV6GMHnpgCChzhPPYjV0j5tunLVZTv-QWq8k2ivldmUk6hvlKuGXtRKPYHylhC1EisHuMEV150H9jJQZh_AWc-RdfAAmvqelhM_eze3r6qBCgODDJGEFsU_n-OSSlsH22KDFO08xzYtwxoiAWgWq4SLHSayH5kTab_Ag9O5l8gsR_dEJbP3hpM6pqejj77btNpHq54p4Sc3nhlUC-O68iMquMf5kqUoEg0yY",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f9f9f7",
+  "theme_color": "#a83223",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f9f9f7;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#bbeafa", "on-error": "#ffffff", "primary-fixed-dim": "#ffb4a8", "tertiary-container": "#00873a", "primary-container": "#c94a38", "inverse-primary": "#ffb4a8", "on-tertiary": "#ffffff", "on-error-container": "#93000a", "on-tertiary-fixed": "#002109", "on-secondary-fixed": "#001f27", "tertiary-fixed-dim": "#62df7d", "secondary-container": "#b8e7f7", "surface-container-high": "#e8e8e6", "on-primary-container": "#fffbff", "surface-container": "#eeeeec", "secondary-fixed-dim": "#9fcedd", "primary": "#a83223", "surface": "#f9f9f7", "outline": "#8c716c", "surface-container-highest": "#e2e3e1", "surface-tint": "#ab3425", "error": "#ba1a1a", "inverse-surface": "#2f3130", "primary-fixed": "#ffdad4", "inverse-on-surface": "#f1f1ef", "surface-variant": "#e2e3e1", "on-surface-variant": "#58413d", "on-secondary": "#ffffff", "secondary": "#366572", "error-container": "#ffdad6", "tertiary": "#006b2c", "surface-bright": "#f9f9f7", "on-background": "#1a1c1b", "background": "#f9f9f7", "on-primary-fixed-variant": "#8a1c10", "outline-variant": "#e0bfba", "on-primary-fixed": "#410100", "on-tertiary-container": "#f7fff2", "on-tertiary-fixed-variant": "#005320", "surface-container-low": "#f4f4f2", "on-primary": "#ffffff", "tertiary-fixed": "#7ffc97", "on-secondary-fixed-variant": "#1b4d5a", "surface-dim": "#dadad8", "on-surface": "#1a1c1b", "on-secondary-container": "#3b6977", "surface-container-lowest": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "space-md": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "gutter": "1rem" }, "fontFamily": { "label-badge": ["Inter"], "label-numeric-md": ["Inter"], "label-numeric-lg": ["Inter"], "display": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-caps": ["Inter"], "body-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "label-badge": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "label-numeric-md": ["15px", { "lineHeight": "18px", "fontWeight": "600" }], "label-numeric-lg": ["22px", { "lineHeight": "26px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-lg": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-sm": ["17px", { "lineHeight": "22px", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between max-w-[420px] mx-auto"><div class="flex items-center gap-space-sm"><img alt="NestMate AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJoplsV6GMHnpgCChzhPPYjV0j5tunLVZTv-QWq8k2ivldmUk6hvlKuGXtRKPYHylhC1EisHuMEV150H9jJQZh_AWc-RdfAAmvqelhM_eze3r6qBCgODDJGEFsU_n-OSSlsH22KDFO08xzYtwxoiAWgWq4SLHSayH5kTab_Ag9O5l8gsR_dEJbP3hpM6pqejj77btNpHq54p4Sc3nhlUC-O68iMquMf5kqUoEg0yY"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">NestMate AI</span><span class="font-label-badge text-label-badge text-on-surface-variant hidden">Discover</span></div><div class="flex items-center gap-1 mt-0.5"><span class="material-symbols-outlined text-[13px] text-primary">location_on</span><span class="font-label-caps text-label-caps text-secondary font-semibold tracking-wider">Gurugram · DLF Phase 3</span></div></div></div><div class="flex items-center"><div class="relative flex items-center justify-center p-0.5 rounded-full ring-2 ring-surface-container-high bg-surface-container-lowest"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpUL4r6g2Z7Fc3j7lUpgFGC-8NrrIGA-1qlwW2AlHgl2S3PZsHfIrQAPULTEOSbY25SwUIJ-iZlMEp_HBZWker0YGPJZA2A-0qFGPKjsk3V3wF62Q0Jjk7HoYPaa1W3-1jJqcMTMAE1sf3cEZzZWOdMExAH0HCGomXnzDNSPsHg_0rcUmY_z_JZEXho-ZAiXbAYXegIm1lRlVtZhXOmaK0uI80Rmlwyro1NG5x28"/><div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary ring-2 ring-surface-container-lowest"><span class="material-symbols-outlined text-[10px] font-bold">verified</span></div></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface max-w-[420px] mx-auto min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Top Profile Hero & Verification Badge Showcase -->
+<div class="px-margin pt-space-md flex flex-col gap-space-lg">
+<!-- User Avatar & Identity Block -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary-container/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md relative z-10">
+<div class="relative shrink-0">
+<img class="w-20 h-20 rounded-full object-cover shadow-sm bg-surface-container-high" data-alt="Close-up professional yet warm portrait of Aman, a 27-year-old South Asian tech consultant with neat stubble and modern glasses, wearing an olive linen shirt, warm natural sunlight in a Gurugram high-rise apartment background, soft terracotta undertones, realistic photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnSkzuYhIVljRocGee69vEvnKUa9JfUGal9nWGSmtsSwRxS-qewricelQ5KKcKVceCjzOCjOaitlInp5Cp1OCyhXV9UdPS6wzdzJiAvMraeoqJ3-CEh-W6p81BO-3LjCtt1kLAv3iKFQcsJ7A7m07pGplkFTmGT3_JnHhF1RtvHGtWuXA25FQZl_WsNYmziwElYAJHK7crikR2nW-Xt2Ar2ESYpWEw1-9eaWydFWI"/>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Aman Verma</h2>
+<span class="font-body-md text-body-md text-on-surface-variant shrink-0">, 27</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">corporate_fare</span>
+<span class="truncate">Sr. Consultant @ Deloitte Cybercity</span>
+</p>
+<div class="flex items-center gap-1.5 mt-1.5 text-on-surface-variant font-label-caps text-label-caps">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Active Co-living Seeker</span>
+<span class="text-outline-variant">•</span>
+<span>Joined 2024</span>
+</div>
+</div>
+</div>
+<!-- Government & Corporate Credential Badges -->
+<div class="flex flex-wrap gap-1.5 pt-space-xs">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">mark_email_read</span>
+<span>Deloitte Work Email</span>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary font-label-badge text-label-badge">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span>DigiLocker KYC</span>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-badge text-label-badge">
+<span class="material-symbols-outlined text-[13px]">shield</span>
+<span>DPDP Compliant</span>
+</div>
+</div>
+<!-- Trust Score Radial & Completion Strip -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between gap-space-md mt-1">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-12 h-12 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-tertiary stroke-current stroke-dasharray-[96,100]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="96, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-label-numeric-md text-label-numeric-md text-tertiary font-bold">96%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Trust &amp; Safety Index</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Top tier safety verified</span>
+</div>
+</div>
+<button class="px-space-sm py-1.5 bg-surface-container text-secondary rounded-lg font-label-badge text-label-badge active:scale-95 transition-transform flex items-center gap-0.5" id="viewScoreMetricsBtn">
+<span>Inspect</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Lifestyle & Daily Rhythm Tags -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold tracking-wider uppercase">Living Rhythm &amp; Quirks</span>
+<button class="font-label-badge text-label-badge text-primary flex items-center gap-0.5">
+<span>Edit</span>
+<span class="material-symbols-outlined text-[13px]">tune</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-lowest p- space-sm p-3 rounded-lg flex items-center gap-2.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-[10px] text-on-surface-variant">Food Harmony</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Non-veg friendly</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg flex items-center gap-2.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">bedtime</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-[10px] text-on-surface-variant">Lights Out</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">12:30 AM sleep</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg flex items-center gap-2.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">deck</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-[10px] text-on-surface-variant">Smoker Code</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Balcony only</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg flex items-center gap-2.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">laptop_mac</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-[10px] text-on-surface-variant">Work Model</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Hybrid (2d office)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Rental Preferences Summary Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">apartment</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Target Search</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-label-badge text-[11px] font-bold">Move-in 1st Nov</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">travel_explore</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-semibold">Priority Corridor</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">DLF Phase 3 &amp; Sector 43, Gurugram</span>
+<span class="font-body-sm text-[11px] text-secondary">Within 15 mins of Cybercity Rapid Metro</span>
+</div>
+</div>
+</div>
+<!-- Financials & Room Split Layout -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Budget Bracket</span>
+<span class="font-label-numeric-lg text-label-numeric-lg text-primary">₹22k - ₹28k</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Includes maintenance</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Room Layout</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Private Master</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Attached bath required</span>
+</div>
+</div>
+</div>
+<!-- Compatibility Engine & Quiz Health -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Compatibility Matrix</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">12 of 12 questions answered</p>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary font-label-caps text-label-caps font-bold">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>100% COMPLETE</span>
+</div>
+</div>
+<!-- Micro visual bar meter -->
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full w-[45%]"></div>
+<div class="bg-primary h-full w-[35%]"></div>
+<div class="bg-tertiary h-full w-[20%]"></div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-caps text-[10px]">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Cleanliness</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Social Density</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Budget Rules</span>
+</div>
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container-low text-secondary font-headline-sm text-[13px] font-bold flex items-center justify-center gap-1.5 active:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span>Retake Habit Quiz</span>
+</button>
+</div>
+<!-- Verification Center Section -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold tracking-wider uppercase">Verification Center</span>
+<span class="font-label-badge text-label-badge text-tertiary flex items-center gap-0.5 font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+          Level 3 Cleared
+        </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm divide-y-0 overflow-hidden flex flex-col gap-1 p-1">
+<!-- Work Email Status -->
+<div class="p-space-sm flex items-center justify-between rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed/40 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Deloitte Enterprise SSO</span>
+<span class="px-1.5 py-0.2 bg-tertiary/10 text-tertiary font-label-caps text-[9px] rounded font-bold">ACTIVE</span>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">aman.v****@deloitte.com</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+</div>
+<!-- Govt ID (DigiLocker) -->
+<div class="p-space-sm flex items-center justify-between rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed/40 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">id_card</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Govt Aadhaar ID</span>
+<span class="px-1.5 py-0.2 bg-tertiary/10 text-tertiary font-label-caps text-[9px] rounded font-bold">VERIFIED</span>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">UIDAI DigiLocker Authenticated</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+</div>
+<!-- LinkedIn Identity -->
+<div class="p-space-sm flex items-center justify-between rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed/40 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">LinkedIn Career Graph</span>
+<span class="px-1.5 py-0.2 bg-tertiary/10 text-tertiary font-label-caps text-[9px] rounded font-bold">CONNECTED</span>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">500+ Connections • Gurugram Hub</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+</div>
+<!-- Privacy Shield: Phone Masking Feature -->
+<div class="p-space-sm bg-surface-container-low/70 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">phonelink_lock</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Phone Privacy Shield</span>
+<span class="px-1.5 py-0.2 bg-primary/10 text-primary font-label-caps text-[9px] rounded font-bold">ACTIVE</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">+91 98••• ••821 (Masked till mutual match)</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="shieldToggle" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Shortcuts & Living Rules -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-0.5">
+<button class="w-full flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Constitution &amp; Dealbreakers</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">4 strict dealbreakers declared</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Match Ping Alerts</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Instant WhatsApp &amp; In-app alerts</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Escrow Deposit Safety</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">NestMate Protected Guarantee</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+</div>
+<!-- Sign Out / Profile Actions -->
+<div class="flex flex-col items-center gap-2 pt-2">
+<button class="w-full py-3.5 px-space-md rounded-xl bg-surface-container-high text-on-surface-variant font-headline-sm text-headline-sm font-semibold active:scale-[0.99] transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+<span>Account &amp; Data Rights</span>
+</button>
+<span class="font-label-caps text-label-caps text-outline text-[10px] tracking-widest mt-1">NestMate AI • DLF Corridor Engine v2.4</span>
+</div>
+</div>
+<!-- Interactive Trust Drawer Modal (Vanilla JS micro-interaction) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden flex items-end justify-center" id="scoreModal">
+<div class="w-full max-w-[420px] bg-surface-container-lowest rounded-t-2xl p-space-lg flex flex-col gap-space-md shadow-2xl animate-in slide-in-from-bottom duration-200">
+<div class="w-12 h-1.5 bg-surface-container-high rounded-full self-center"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[24px]">verified_user</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Trust Score Breakdown</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant" id="closeModalBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-2.5 py-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">Aadhaar DigiLocker Check</span>
+<span class="text-tertiary font-bold">+40 pts (Full)</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">Deloitte Corporate SSO</span>
+<span class="text-tertiary font-bold">+30 pts (Full)</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">100% Habit Quiz Depth</span>
+<span class="text-tertiary font-bold">+16 pts (Full)</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">LinkedIn Network Age &gt; 3 yrs</span>
+<span class="text-tertiary font-bold">+10 pts (Full)</span>
+</div>
+</div>
+<button class="w-full py-3 bg-secondary text-on-secondary rounded-xl font-headline-sm text-headline-sm font-semibold mt-1" id="okModalBtn">
+        Got it
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function initProfileInteractions() {
+    const inspectBtn = document.getElementById('viewScoreMetricsBtn');
+    const modal = document.getElementById('scoreModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const okBtn = document.getElementById('okModalBtn');
+
+    function openModal() {
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      if (modal) modal.classList.add('hidden');
+    }
+
+    if (inspectBtn) inspectBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (okBtn) okBtn.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(25,28,30,0.03)]" data-active-classes="text-secondary font-bold scale-[1.02]"><div class="max-w-[420px] mx-auto flex justify-between items-center h-16 px-space-xs"><a class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-transform duration-200" data-path="discover" href="#"><span class="material-symbols-outlined text-[24px]">style</span><span class="font-label-caps text-label-caps">Discover</span></a><a class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-transform duration-200" data-path="matches-and-chat" href="#"><div class="relative"><span class="material-symbols-outlined text-[24px]">chat_bubble</span><span class="absolute -top-1 -right-3 px-1 py-0.2 bg-primary text-on-primary font-label-caps text-[9px] rounded-full leading-tight font-bold tracking-tight shadow-sm">24h</span></div><span class="font-label-caps text-label-caps">Matches</span></a><a class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-transform duration-200" data-path="home-os" href="#"><div class="relative"><span class="material-symbols-outlined text-[24px]">cottage</span><span class="absolute -top-1 -right-1.5 w-2 h-2 rounded-full bg-tertiary ring-1 ring-surface"></span></div><span class="font-label-caps text-label-caps">Home OS</span></a><a class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-transform duration-200" data-path="profile-verify" href="#"><span class="material-symbols-outlined text-[24px]">verified_user</span><span class="font-label-caps text-label-caps">Verify</span></a></div></nav></body></html>

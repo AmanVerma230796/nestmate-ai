@@ -1,0 +1,19 @@
+{
+  "name": "nestmate-ai",
+  "version": "2.0.0",
+  "description": "NestMate AI — Lean MVP Mobile PWA for Gurugram Urban Renters",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "flatmate",
+    "coliving",
+    "nestmate",
+    "gurugram",
+    "pwa"
+  ],
+  "author": "Aman Verma",
+  "license": "ISC"
+}

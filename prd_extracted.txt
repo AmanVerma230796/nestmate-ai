@@ -1,0 +1,341 @@
+NestMate AI — PRD v2.0 (Lean MVP)
+Nov 13, 2026 · @Aman Verma
+1. Overview
+NestMate AI is a mobile-first app for urban Indian renters that matches verified, lifestyle-compatible flatmates via swipe discovery and a 0–100% compatibility score, then converts matched pairs into daily users of an AI-assisted household manager (chores, staff, bills).
+Attribute
+Value
+Version
+v2.0 — Lean MVP (supersedes v1.0, Nov 13 2026)
+Stage
+Concept → MVP, pre-validation
+Launch market
+Gurugram: DLF Phase 3, Sector 43, Golf Course Road
+Platform
+PWA first; native apps after liquidity is proven
+Owner
+Founder / Lead PM
+What changed from v1.0: the MVP is cut to the smallest build that tests the core bet. Removed from MVP: AI Conflict Mediator (F-09), AI Compatibility Insight Summary, native app-store launch, and simultaneous two-sided onboarding. Added: a mandatory bridge fake-door test before Home Mode is built, and a verification path for students and freelancers.
+2. Problem & thesis
+Finding a flatmate and living with one are both broken, and no product owns both halves.
+Pre-move-in: flatmate discovery runs through unverified Facebook/WhatsApp groups flooded with brokers. Renters decide under time pressure with zero data on lifestyle fit (diet and kitchen rules, sleep, cleanliness, guests, WFH noise).
+Post-move-in: friction over dishes, guests, maid/cook pay and bills festers because raising it directly feels awkward. Tools are fragmented across WhatsApp, Splitwise and whiteboards.
+The structural trap: pure matching apps suffer success churn — users delete the app the day a lease is signed. Pure chore apps have cold-start friction. Pairing them solves both, if matched users actually cross into the household product.
+Thesis: verified, compatibility-scored swipe matching acquires users at peak urgency (<7 days to match); an AI household OS retains them across the 11-month lease.
+The central bet of this PRD: everything depends on the Discovery → Home Mode bridge. Matching mechanics are well understood; whether matched pairs migrate from WhatsApp into Home Mode is unproven. v2.0 therefore validates the bridge before building the full Home OS (see §10).
+3. Target users
+The flat-holder is the priority persona: they hold the inventory, bleed rent daily on a vacant room, and anchor supply-first seeding.
+Priority
+Persona
+Who
+Core need
+Today's behaviour
+P0
+Flat-holder ("Got a Flat")
+22–32 professional with a lease and one vacant room
+Fill the room in days, no brokerage, no incompatible stranger
+Posts in 5 FB groups, screens 30 DMs, exhausting visits
+P1
+Room-seeker ("Need a Flat")
+21–30 relocating professional or student
+Verify vibe, hidden costs and safety before paying a deposit
+Scrolls listings on commute, fears scams, compromises under urgency
+P2
+Household (post-move-in)
+2–4 flatmates on an active lease
+Fair chores, automated bill splits, neutral rule enforcement
+WhatsApp + Splitwise + avoidance until a blow-up
+All three are mobile-native (Bumble/Hinge, UPI, Splitwise daily users). Accessibility: readable score breakdowns, alt-text on room photos, one-handed swipe ergonomics, non-punitive notifications.
+4. Goals, non-goals and v2 cuts
+Goals (MVP):
+Match a verified, compatible flatmate in under 7 days in the launch corridors.
+Prove the bridge: matched pairs activate a shared Home Mode workspace.
+Keep brokers below 2% of active profiles.
+Non-goals (unchanged from v1.0): brokerage marketplace, landlord portals, in-app rent/escrow payments, legal e-stamp agreements, dating features.
+New cuts in v2.0 — and why:
+Cut
+Was
+Why removed
+AI Conflict Mediator (F-09)
+Should Have, MVP
+Riskiest AI surface (tone misfires, red-teaming burden) for a rarely-used feature. Home Mode ships with plain scheduled reminders; Referee returns in v1.1 if concept-tested well.
+AI Compatibility Insight Summary
+AI capability #1
+The deterministic score breakdown already explains alignment; a 2-sentence LLM blurb adds latency and hallucination risk for near-zero value.
+Native iOS/Android at launch
+MVP assumption
+PWA ships instantly, is shareable inside the WhatsApp groups being replaced, and avoids app-store review before liquidity is proven. Resolves v1.0 open question Q4.
+Two-sided simultaneous launch
+Implicit in v1.0
+Seed "Got a Flat" supply first; seekers join a waitlist until ≥15 active listings per corridor. An empty deck is worse than a waitlist.
+15-question quiz as fixed scope
+F-03
+Quiz length becomes a tested variable (10 vs 15); dealbreakers matter more than soft-habit precision at MVP.
+5. Success metrics
+The bridge metric (Discovery → Home Mode conversion) is the one number that validates the business model; everything else gates or supports it.
+Category
+Metric
+Definition
+Target
+Window
+North star
+Harmonious Co-Living Weeks
+Active households (2+ members) completing ≥70% of scheduled chores/bills without an overdue dispute
+Directional weekly growth
+Weekly
+Bridge (primary)
+Discovery → Home conversion
+% of matched pairs activating a shared Home Mode workspace within 21 days of matching
+≥25%
+21 days
+Liquidity
+Active listings per corridor
+Verified "Got a Flat" listings per 2 km launch radius
+≥15 before opening seekers
+Weekly
+Activation
+Quiz completion
+% of signups finishing the lifestyle quiz
+≥75%
+Daily
+Activation
+Match-to-chat rate
+% of mutual swipes (score ≥75%) exchanging ≥3 messages in 48 h
+≥35%
+48 h
+Trust
+Verified profile rate
+Verified / total signups
+≥85%
+Daily
+Guardrail
+Broker & harassment reports
+% of active profiles with verified reports
+<1.5%
+Weekly
+Retention
+Home Mode WAU/MAU
+Weekly ÷ monthly active household members
+≥65%
+Monthly
+6. Product scope
+ID
+Feature
+Module
+Priority
+Release
+F-01
+Dual-mode onboarding ("Got a Flat" / "Need a Flat")
+Discovery
+Must
+MVP
+F-02
+Identity & anti-broker verification (work email / LinkedIn / student ID / govt ID)
+Trust
+Must
+MVP
+F-03
+Lifestyle compatibility quiz (10–15 Qs, tested) + 0–100% breakdown
+Matching
+Must
+MVP
+F-04
+Swipe deck + hard dealbreaker filters
+Matching
+Must
+MVP
+F-05
+24-hour icebreaker chat + "Move-in together" trigger
+Matching
+Must
+MVP
+F-06
+Bridge CTA: 1-tap "Generate our house rules & split sheet" in chat
+Bridge
+Must
+MVP
+F-07
+AI House Constitution generator (editable, approval-gated)
+Home OS
+Must
+MVP†
+F-08
+Chore & domestic staff (maid/cook/water) rotation
+Home OS
+Must
+MVP†
+F-09
+Expense split ledger + UPI deep links + plain scheduled reminders
+Home OS
+Must
+MVP†
+F-10
+AI Conflict Mediator ("Neutral Referee")
+Home OS
+Deferred
+v1.1
+F-11
+"Squad Up" (two seekers hunt together)
+Matching
+Deferred
+v1.1
+F-12
+Video vibe-check + tour scheduler
+Matching
+Deferred
+v1.1
+F-13
+NestMate Plus subscription
+Monetization
+Deferred
+v1.1
+† Home OS features are built only after the bridge fake-door test (§10) shows ≥25% tap-through intent.
+7. Core user journey
+One funnel from signup to retained household; step 6 is the bridge every upstream step feeds.
+Verify — work email, LinkedIn, student ID or govt ID; unverified users cannot swipe or be seen.
+Quiz — 10–15 lifestyle questions; dealbreakers first (diet/kitchen, smoking, budget, gender preference), soft habits after (sleep, cleanliness, WFH, social vibe).
+Swipe — deck pre-filtered by hard dealbreakers within the corridor radius, ranked by compatibility score; score breakdown visible on every card.
+Match & chat — mutual swipe opens a 24-hour icebreaker window with suggested prompts from the two profiles' top synergy and friction points (template-driven, not LLM).
+Move-in handshake — either user taps "We're moving in together"; both confirm.
+Bridge (F-06) — chat detects move-in discussion or handshake and surfaces the 1-tap "Generate our house rules & split sheet" CTA. This is the make-or-break step.
+Home Mode — AI drafts the House Constitution from both quiz vectors; flatmates edit and approve; chore rotation, staff schedule and split ledger activate.
+Daily loop — chore checkoffs, maid attendance, bill splits with UPI deep links; 4–6 opens/week sustains retention through the lease.
+8. Key functional requirements
+Trust & verification
+Verification gate before any profile is visible or can swipe; student-ID and freelancer paths (GST/portfolio + govt ID) sit beside work email/LinkedIn so legitimate non-corporate users are not excluded.
+Max 2 active listings per account; 3 verified broker reports auto-freeze an account pending review.
+Phone numbers never shown publicly; chat stays in-app until users share contacts themselves.
+Matching
+Hard dealbreakers enforced as SQL filters before ranking — a dealbreaker mismatch never appears in the deck.
+Compatibility score is deterministic and auditable (weighted scoring in TypeScript/SQL, sub-50 ms); every score shows its per-dimension breakdown.
+Geo-radius matching via PostGIS, scoped to launch corridors.
+Home Mode (built after bridge validation)
+House Constitution: 6–8 editable rules drafted from quiz vectors + flat specs; activates only after every flatmate approves.
+Chore rotation fair across 2–4 flatmates; supports domestic staff schedules (maid, cook, water delivery).
+Ledger tracks splits and generates UPI deep links; the app never holds funds. Reminders are scheduled and neutral ("Rent split due Friday"), not peer-to-peer nags.
+9. AI requirements
+One AI capability ships in the MVP; two from v1.0 are cut (§4). The compatibility score itself is never AI — it stays deterministic.
+Capability
+Input
+Output
+Guardrails & fallback
+House Constitution generator
+All flatmates' quiz vectors + flat specs (maid/cook/AC)
+Structured JSON of 6–8 editable rules tailored to habit overlaps
+Approval-gated: rules activate only after every flatmate reviews and approves. Falls back to a curated Indian 2BHK/3BHK rule template on API failure. Max 3 drafts per household.
+User agency: every AI output is editable, regenerable (≤3×) or discardable; nothing auto-activates.
+Cost controls: compact fast models, structured JSON output, <$0.01/household/month.
+Deferred (v1.1): Neutral Referee conflict mediator — ships only if the concept test (§10) shows users read it as helpful rather than passive-aggressive-by-proxy, with moderation filters and red-teaming before launch.
+10. Validation plan (gates the build)
+Tests run in priority order; each gates what gets built next. The bridge test comes first because it validates the business model before any Home OS engineering.
+#
+Test
+Method
+Pass signal
+Gates
+1
+Bridge fake-door
+Show matched pairs (or simulated chat prototypes) a "Generate our house rules & split sheet" CTA; measure tap-through
+≥25% tap intent
+Home OS build (F-07–F-09)
+2
+Quiz funnel
+Clickable prototype with 15 Gurugram renters; per-question drop-off; 10-Q vs 15-Q variants
+≥75% completion in <3 min
+Final quiz length
+3
+Verification inclusivity
+Run students + freelancers through the verify flow alongside corporate users
+<10% legitimate-user rejection
+Verification paths at launch
+4
+Compatibility trust
+Show profiles with and without the % score; compare swipe decisions
+Score visibly changes decisions
+Score prominence in deck UI
+5
+Referee concept test
+5 real conflict scenarios, AI-rewritten, shown to 12 flatshare residents
+Read as helpful, not robotic
+Whether F-10 enters v1.1
+Participants: 15 current flatshare residents in launch corridors, split between flat-holders and seekers. Invalidation is a result too: if the bridge test fails, the product becomes a matching app with a different retention strategy — decided before Phase 3 spend.
+11. Technical approach & launch
+Layer
+Stack
+Why
+Client
+React Native (Expo) + TypeScript, shipped as PWA first
+One codebase; instantly shareable link in WhatsApp groups; no store review before liquidity is proven
+Backend
+Node.js + PostgreSQL (PostGIS) + Supabase/Firebase realtime
+Geo-radius + dealbreaker SQL filtering; realtime chat and chore sync
+Compatibility engine
+Deterministic weighted scoring (TypeScript/SQL)
+Transparent, auditable, sub-50 ms, zero hallucination risk
+AI layer
+Compact fast LLM via structured JSON
+One bounded capability (§9) with template fallback
+Delivery phases (dependency-ordered):
+Validation — run §10 tests 1–3 on prototypes. Gate: bridge ≥25%, quiz ≥75%.
+Core matching MVP — auth, verification, quiz, engine, swipe deck, chat, as PWA.
+Home Mode — Constitution generator, chore rotation, ledger (only if gate 1 passed).
+Trust & QA — broker stress tests, DPDP privacy audit, WCAG 2.1 AA pass, <250 ms deck load.
+Hyper-local pilot — 300 verified users across the 3 corridors.
+Launch sequence: seed 100 "Got a Flat" listings via corporate Slack/Teams and RWA groups first; open seeker access per corridor only at ≥15 active listings; expand sector-by-sector, then Bengaluru (HSR/Koramangala/Indiranagar) once density holds.
+12. Risks, assumptions and open questions
+Top risks
+Risk
+Prob / Impact
+Mitigation
+WhatsApp leak: matched pairs never activate Home Mode
+High / High
+Bridge CTA inside chat at the move-in moment (F-06); bridge fake-door test gates all Home OS spend
+Empty decks in launch corridors
+High / High
+Supply-first seeding; seeker waitlist until ≥15 listings; corridor-by-corridor opening
+Broker infiltration
+High / High
+Verification gate, 2-listing cap, 3-strike auto-freeze
+Verification excludes students/freelancers
+Med / High
+Dedicated non-corporate verify paths, tested in §10 #3
+Quiz drop-off corrupts scores
+Med / Med
+Quiz length is a tested variable; dealbreakers front-loaded so partial completions still filter
+Key assumptions: launch-market behaviours (11-month leases, domestic staff, UPI) are Gurugram-specific — other cities need re-validated compatibility variables. Freemium maximizes early liquidity; monetization deferred to v1.1. Competitor capabilities (e.g. Bunkd) in v1.0 were written without live verification — re-verify before relying on positioning claims.
+Resolved from v1.0: Q4 (PWA vs native) → PWA first. Squad Up (Q1) → deferred to v1.1, but revisit if seeker-side liquidity stalls — it lets seekers match each other in an empty market.
+Still open:
+☐ Q2 — Should female users get a women-only discovery deck by default? (Trust & Safety; decide before pilot)
+☐ Q3 — Monetization: NestMate Plus subscriptions vs hyper-local partner affiliates (broadband, furniture, maid agencies)? (Decide by v1.1 planning)
+☐ Quiz final length — 10 vs 15 questions, settled by validation test #2
+13. Information architecture
+Derived from the PRD and the four Stitch screens (swipe deck × 2 states, profile & verification, Home & Match Hub). One fixed 4-tab shell serves both lifecycle states; only the content emphasis flips.
+app sitemap · adaptive shell, 4 tabs
+The tab bar never changes; the lifecycle state decides which tab is home — seekers land on Discover, active households land on Home OS, and a flatmate leaving re-opens Discovery through the vacancy feed. The accented tab holds the bridge CTA, the product's make-or-break step (§2).
+Surface inventory (what the designed screens hold)
+Screen
+Tab
+Contents
+PRD features
+Swipe deck (loaded + empty states)
+Discover
+Filter chips (budget, corridor, diet); card with room photos, all-inclusive rent, tenant + KYC badges, Lifestyle Synergy breakdown (diet/sleep/WFH %), household cost chips (cook split, maid, DG); actions: undo / pass / save / Connect & Tour
+F-01, F-03, F-04
+Home & Match Hub
+Matches
+Looking vs Co-Living toggle; expiring-matches alert; pipeline with match % and 24 h timers; Home OS summary (pending receivable, water turn, constitution health); smart feed (vacancy rematch, LinkedIn sync); quick actions
+F-05, F-06; summaries of F-07–F-09
+Profile & verification
+Verify
+Identity card + Trust & Safety index; living rhythm chips; target search (corridor, budget, layout, move-in); compatibility matrix + retake quiz; verification center (work SSO, Aadhaar/DigiLocker, LinkedIn, phone masking); dealbreakers, alerts, escrow note, account & data rights
+F-02, F-03
+Navigation rules
+Bottom nav is fixed at 4 tabs; the top-bar avatar is a second entry point to Verify/Profile. Badges: Matches carries the 24 h countdown, Home OS a pending-turn dot.
+State logic: in Looking state, Discover is the default tab and Home OS shows a locked teaser; in Co-Living state, Home OS is the default and Discover collapses to a "Browse decks" quick action on the hub.
+Phone numbers stay masked until a mutual match (Phone Privacy Shield); chat stays in-app.
+The hub deliberately mixes both halves: match pipeline on top for urgency, Home OS summary below it so the bridge is always one scroll away.
+Screens still to design (gaps)
+Onboarding + dual-mode signup and the quiz flow (F-01, F-03)
+Chat room with the bridge CTA moment (F-05, F-06) — highest priority: it is validation test #1
+House Constitution review & approve (F-07)
+Chore/staff rotation and ledger detail screens (F-08, F-09)
+Seeker waitlist / empty-corridor state

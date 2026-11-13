@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta name="theme-color" content="#f9f9f7"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <title>NestMate AI — Verified Flatmate Discovery & Co-Living OS</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#a83223",
+            "primary-container": "#c94a38",
+            "primary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb4a8",
+            "on-primary": "#ffffff",
+            "secondary": "#366572",
+            "secondary-container": "#b8e7f7",
+            "secondary-fixed": "#bbeafa",
+            "on-secondary": "#ffffff",
+            "tertiary": "#006b2c",
+            "tertiary-container": "#00873a",
+            "tertiary-fixed": "#7ffc97",
+            "on-tertiary": "#ffffff",
+            "surface": "#f9f9f7",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "surface-container-highest": "#e2e3e1",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#58413d",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Plus Jakarta Sans", "sans-serif"],
+            numeric: ["Inter", "sans-serif"],
+            "label-caps": ["Inter", "sans-serif"],
+            "label-badge": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json"/>
+</head>
+<body class="bg-[#f4f3ef] font-body text-on-surface flex flex-col min-h-screen selection:bg-secondary-container">
+
+  <!-- Desktop Canvas Frame / Responsive Shell Wrapper -->
+  <div class="mobile-shell-container">
+
+    <!-- Top App Safe Bar -->
+    <header class="sticky top-0 w-full z-40 bg-surface/90 backdrop-blur-xl border-b border-[#eae8e2] px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-sm shadow-sm">
+          <span class="material-symbols-outlined text-[20px]">cottage</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1">
+            <span class="font-headline-sm text-sm font-extrabold text-on-surface tracking-tight leading-none">NestMate AI</span>
+            <span class="text-[9px] bg-secondary-container text-secondary font-bold px-1.5 py-0.2 rounded-full uppercase">MVP v2</span>
+          </div>
+          <div class="flex items-center gap-1 mt-0.5">
+            <span class="material-symbols-outlined text-[13px] text-primary">location_on</span>
+            <span class="font-label-caps text-[10px] text-secondary font-semibold">Gurugram · DLF Phase 3</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Desktop Wide Toggle Button -->
+        <button onclick="window.app.toggleDesktopWideMode()" class="w-8 h-8 rounded-full bg-surface-container-low text-secondary flex items-center justify-center hover:bg-surface-container transition-colors" title="Toggle Desktop/Mobile Canvas">
+          <span class="material-symbols-outlined text-[18px]">aspect_ratio</span>
+        </button>
+
+        <!-- Profile Avatar Trigger -->
+        <div class="relative cursor-pointer" onclick="window.app.switchTab('profile-verify')">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpUL4r6g2Z7Fc3j7lUpgFGC-8NrrIGA-1qlwW2AlHgl2S3PZsHfIrQAPULTEOSbY25SwUIJ-iZlMEp_HBZWker0YGPJZA2A-0qFGPKjsk3V3wF62Q0Jjk7HoYPaa1W3-1jJqcMTMAE1sf3cEZzZWOdMExAH0HCGomXnzDNSPsHg_0rcUmY_z_JZEXho-ZAiXbAYXegIm1lRlVtZhXOmaK0uI80Rmlwyro1NG5x28" alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" />
+          <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center text-white ring-2 ring-white">
+            <span class="material-symbols-outlined text-[9px] font-bold">verified</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-1 w-full px-4 pt-3 pb-20">
+
+      <!-- ================= TAB 1: DISCOVER (F-01, F-03, F-04) ================= -->
+      <section id="tab-content-discover" class="tab-pane flex flex-col gap-3">
+        <!-- Filter Bar -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+          <button class="filter-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-secondary text-white shadow-sm shrink-0" data-filter="all" onclick="window.swipeDeck.setFilter('corridor', 'all')">
+            All Gurugram
+          </button>
+          <button class="filter-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:bg-surface-container shrink-0" data-filter="DLF Phase 3" onclick="window.swipeDeck.setFilter('corridor', 'DLF Phase 3')">
+            DLF Phase 3
+          </button>
+          <button class="filter-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:bg-surface-container shrink-0" data-filter="Sector 43" onclick="window.swipeDeck.setFilter('corridor', 'Sector 43')">
+            Sector 43
+          </button>
+          <button class="filter-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:bg-surface-container shrink-0" data-filter="Golf Course Road" onclick="window.swipeDeck.setFilter('corridor', 'Golf Course Road')">
+            Golf Course Rd
+          </button>
+        </div>
+
+        <!-- Touch / Drag Swipe Deck Container -->
+        <div id="swipe-card-stack" class="card-stack mt-1">
+          <!-- Dynamically populated by swipe.js -->
+        </div>
+
+        <!-- Swipe Quick Action Controls -->
+        <div class="flex items-center justify-center gap-4 py-2 mt-1">
+          <!-- Undo Button -->
+          <button onclick="window.swipeDeck.undo()" class="w-12 h-12 rounded-full bg-surface-container-lowest border border-[#eae8e2] text-on-surface-variant flex items-center justify-center shadow-sm active:scale-90 hover:bg-surface-container-low transition-all" title="Undo Swipe">
+            <span class="material-symbols-outlined text-[20px]">undo</span>
+          </button>
+          <!-- Pass Button -->
+          <button onclick="window.swipeDeck.triggerSwipe('pass')" class="w-14 h-14 rounded-full bg-surface-container-lowest border border-error/30 text-error flex items-center justify-center shadow-md active:scale-90 hover:bg-error-container/30 transition-all" title="Pass">
+            <span class="material-symbols-outlined text-[26px]">close</span>
+          </button>
+          <!-- Save Button -->
+          <button onclick="window.swipeDeck.triggerSwipe('save')" class="w-12 h-12 rounded-full bg-surface-container-lowest border border-[#eae8e2] text-secondary flex items-center justify-center shadow-sm active:scale-90 hover:bg-surface-container-low transition-all" title="Save">
+            <span class="material-symbols-outlined text-[22px]">bookmark</span>
+          </button>
+          <!-- Connect & Tour (Primary Terracotta) -->
+          <button onclick="window.swipeDeck.triggerSwipe('like')" class="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg active:scale-90 hover:bg-primary-container transition-all" title="Connect & Tour">
+            <span class="material-symbols-outlined text-[26px]">favorite</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: MATCHES & CHAT (F-05, F-06) ================= -->
+      <section id="tab-content-matches-and-chat" class="tab-pane hidden flex flex-col gap-4">
+        <!-- Top Radar & Lifecycle Switcher -->
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/60 text-secondary text-[10px] font-bold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+              <span>Cybercity Commuter Radar</span>
+            </div>
+            <button onclick="window.quizManager.openQuizModal()" class="flex items-center gap-1 text-primary text-xs font-bold">
+              <span class="material-symbols-outlined text-[16px]">tune</span>
+              <span>Preferences</span>
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between mt-1">
+            <div>
+              <h1 class="font-headline-sm text-base font-bold text-on-surface">Home & Match Hub</h1>
+              <p class="font-body-sm text-[11px] text-on-surface-variant">Shared 3BHK · DLF Phase 3 & Active Hunt</p>
+            </div>
+            <!-- Looking vs Co-Living Adaptive Switcher -->
+            <div class="flex items-center p-1 bg-surface-container rounded-xl">
+              <button id="hub-toggle-looking" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-badge text-xs font-bold shadow-sm transition-all">Looking</button>
+              <button id="hub-toggle-coliving" class="px-3 py-1.5 rounded-lg text-on-surface-variant font-label-badge text-xs transition-all">Co-Living</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- High Alignment Peak Radar Alert Card -->
+        <div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest border border-[#eae8e2] p-4 shadow-sm">
+          <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-primary-fixed/40 blur-xl pointer-events-none"></div>
+          <div class="flex items-start justify-between relative z-10">
+            <div class="flex flex-col gap-1 max-w-[220px]">
+              <div class="flex items-center gap-1 text-primary">
+                <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                <span class="font-label-caps text-[10px] font-extrabold uppercase">High Alignment Peak</span>
+              </div>
+              <h2 class="font-headline-sm text-sm font-bold text-on-surface">3 Mutual Matches Active</h2>
+              <p class="font-body-sm text-[11px] text-on-surface-variant">Lock a 15-min chai or call before 24h mutual windows lapse.</p>
+            </div>
+            <!-- Radial Match Heat Meter -->
+            <div class="relative w-14 h-14 flex items-center justify-center shrink-0">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                <path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+                <path class="text-primary transition-all duration-700 ease-out" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3.5"></path>
+              </svg>
+              <div class="absolute flex flex-col items-center justify-center">
+                <span class="font-numeric text-xs font-black text-on-surface leading-none">92%</span>
+                <span class="font-label-caps text-[8px] text-on-surface-variant">AVG</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 pt-2 flex items-center justify-between border-t border-surface-container-high/60 text-secondary text-[11px]">
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">verified_user</span>
+              <span>Corp Email & Aadhaar Cleared</span>
+            </div>
+            <button onclick="window.chatManager.openChat('p1')" class="font-bold text-primary flex items-center gap-0.5">
+              Chat Now <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Match Pipeline 24H Shelf -->
+        <div class="flex flex-col gap-2.5">
+          <div class="flex items-center justify-between px-1">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+              <h3 class="font-headline-sm text-sm font-bold text-on-surface">Active Match Pipeline</h3>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-[9px] font-bold uppercase">24H TIMERS</span>
+          </div>
+
+          <!-- Populated by chat.js -->
+          <div id="matches-pipeline-list" class="flex flex-col gap-2.5"></div>
+        </div>
+
+        <!-- Quick Actions Grid -->
+        <div class="flex flex-col gap-2 pt-2">
+          <span class="font-label-caps text-[10px] text-on-surface-variant font-bold uppercase tracking-wider px-1">Co-Living Shortcuts</span>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="window.app.switchTab('discover')" class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest border border-[#eae8e2] shadow-sm active:bg-surface-container transition-all text-center">
+              <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined text-[18px]">style</span>
+              </div>
+              <span class="text-xs font-semibold text-on-surface">Browse Decks</span>
+            </button>
+            <button onclick="window.chatManager.openChat('p1')" class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest border border-[#eae8e2] shadow-sm active:bg-surface-container transition-all text-center relative">
+              <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              <div class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined text-[18px]">forum</span>
+              </div>
+              <span class="text-xs font-semibold text-on-surface">24h Rooms</span>
+            </button>
+            <button onclick="window.app.switchTab('home-os')" class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-lowest border border-[#eae8e2] shadow-sm active:bg-surface-container transition-all text-center">
+              <div class="w-8 h-8 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+              </div>
+              <span class="text-xs font-semibold text-on-surface">Flat Splits</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: HOME OS (F-07, F-08, F-09) ================= -->
+      <section id="tab-content-home-os" class="tab-pane hidden flex flex-col">
+        <!-- Rendered by homeOs.js -->
+        <div id="home-os-tab-content"></div>
+      </section>
+
+      <!-- ================= TAB 4: PROFILE & VERIFY (F-02, F-03) ================= -->
+      <section id="tab-content-profile-verify" class="tab-pane hidden flex flex-col">
+        <!-- Rendered by app.js -->
+        <div id="verify-tab-content"></div>
+      </section>
+
+    </main>
+
+    <!-- Fixed PWA Bottom Navigation Dock (4 Tabs) -->
+    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-surface/90 backdrop-blur-xl border-t border-[#eae8e2] pb-safe shadow-[0_-4px_16px_rgba(25,28,30,0.03)]">
+      <div class="max-w-[420px] mx-auto flex justify-between items-center h-16 px-2">
+        <!-- Tab 1: Discover -->
+        <a href="#discover" data-path="discover" class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-secondary font-bold scale-[1.03] transition-all">
+          <span class="material-symbols-outlined text-[24px]">style</span>
+          <span class="font-label-caps text-[10px]">Discover</span>
+        </a>
+
+        <!-- Tab 2: Matches & Chat -->
+        <a href="#matches" data-path="matches-and-chat" class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all">
+          <div class="relative">
+            <span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+            <span id="nav-matches-badge" class="absolute -top-1 -right-3 px-1 py-0.2 bg-primary text-white font-label-caps text-[8px] rounded-full leading-tight font-bold tracking-tight shadow-sm">24h</span>
+          </div>
+          <span class="font-label-caps text-[10px]">Matches</span>
+        </a>
+
+        <!-- Tab 3: Home OS (Accented Bridge Tab) -->
+        <a href="#home-os" data-path="home-os" class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all">
+          <div class="relative">
+            <span class="material-symbols-outlined text-[24px]">cottage</span>
+            <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-tertiary ring-1 ring-surface"></span>
+          </div>
+          <span class="font-label-caps text-[10px]">Home OS</span>
+        </a>
+
+        <!-- Tab 4: Verify & Profile -->
+        <a href="#verify" data-path="profile-verify" class="relative flex flex-col items-center justify-center min-w-[72px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all">
+          <span class="material-symbols-outlined text-[24px]">verified_user</span>
+          <span class="font-label-caps text-[10px]">Verify</span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+  <!-- ================= MODALS & BOTTOM SHEETS ================= -->
+
+  <!-- 1. Interactive Chat Modal (F-05 & F-06 Bridge CTA) -->
+  <div id="chat-modal" class="modal-overlay">
+    <div class="bottom-sheet h-[88vh] flex flex-col overflow-hidden">
+      <!-- Chat Header -->
+      <div class="p-3.5 border-b border-[#eae8e2] flex items-center justify-between bg-surface-container-low shrink-0">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="relative">
+            <img id="chat-recipient-avatar" src="" alt="" class="w-10 h-10 rounded-full object-cover ring-1 ring-white" />
+            <span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary rounded-full ring-1 ring-white"></span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+              <h3 id="chat-recipient-name" class="font-headline-sm text-sm font-bold text-on-surface truncate">Kabir Mehta</h3>
+              <span id="chat-recipient-compat" class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-badge text-[9px] font-bold">94% Match</span>
+            </div>
+            <p id="chat-recipient-role" class="font-body-sm text-[10px] text-on-surface-variant truncate">Product Designer @ Blinkit</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <div id="chat-handshake-wrapper"></div>
+          <button onclick="window.chatManager.closeChat()" class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Urgency Banner -->
+      <div class="px-3.5 py-1.5 bg-primary-fixed/40 border-b border-primary/20 flex items-center justify-between text-[11px] text-on-primary-fixed-variant">
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-[13px] text-primary">timer</span>
+          <span id="chat-timer-text">24h Mutual Window</span>
+        </div>
+        <span class="font-bold text-primary">Gurugram Verified</span>
+      </div>
+
+      <!-- Icebreaker Prompt Suggestion Bar -->
+      <div id="chat-icebreakers-container" class="px-3.5 pt-2 bg-surface"></div>
+
+      <!-- Messages Scroll Container -->
+      <div id="chat-messages-container" class="flex-1 p-3.5 overflow-y-auto bg-surface no-scrollbar"></div>
+
+      <!-- Message Input Bar -->
+      <div class="p-3 bg-surface-container-low border-t border-[#eae8e2] flex items-center gap-2 shrink-0 pb-safe">
+        <input id="chat-input-field" type="text" placeholder="Type a message or discuss move-in..." class="flex-1 py-2 px-3.5 rounded-full bg-white border border-[#eae8e2] text-xs text-on-surface focus:outline-none focus:border-secondary" />
+        <button onclick="window.chatManager.sendMessage()" class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center shadow-md active:bg-primary-container transition-colors shrink-0">
+          <span class="material-symbols-outlined text-[18px]">send</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Full Profile & Room Tour Modal -->
+  <div id="profile-details-modal" class="modal-overlay">
+    <div class="bottom-sheet h-[85vh] p-4 flex flex-col overflow-y-auto no-scrollbar">
+      <div class="flex items-center justify-between pb-2 border-b border-[#eae8e2]">
+        <h3 id="profile-modal-title" class="font-headline-sm text-base font-bold text-on-surface">Master Bed in 3BHK</h3>
+        <button onclick="window.app.closeProfileModal()" class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="my-3 rounded-2xl overflow-hidden h-52 bg-slate-800">
+        <img id="profile-modal-photo" src="" alt="Room" class="w-full h-full object-cover" />
+      </div>
+
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <span class="font-label-caps text-[10px] text-on-surface-variant block uppercase">All-Inclusive Rent</span>
+          <span id="profile-modal-rent" class="font-numeric text-xl font-bold text-primary">₹24,500/mo</span>
+        </div>
+        <div class="text-right">
+          <span class="font-label-caps text-[10px] text-on-surface-variant block uppercase">Deposit Required</span>
+          <span id="profile-modal-deposit" class="font-numeric text-sm font-semibold text-on-surface">₹49,000</span>
+        </div>
+      </div>
+
+      <p id="profile-modal-sublocation" class="font-body-sm text-xs text-secondary mb-3"></p>
+
+      <div class="p-3 rounded-xl bg-surface-container-low mb-3">
+        <div class="flex items-center justify-between mb-1">
+          <span id="profile-modal-name" class="font-headline-sm text-xs font-bold text-on-surface"></span>
+          <span id="profile-modal-compat" class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-badge text-[10px] font-bold"></span>
+        </div>
+        <p id="profile-modal-role" class="font-body-sm text-[11px] text-on-surface-variant mb-2"></p>
+        <p id="profile-modal-bio" class="font-body-sm text-xs text-on-surface leading-relaxed"></p>
+      </div>
+
+      <div class="flex flex-col gap-2 mb-4">
+        <span class="font-label-caps text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Amenities & Highlights</span>
+        <div id="profile-modal-amenities" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div class="mt-auto pt-2 flex gap-2">
+        <button onclick="window.app.closeProfileModal()" class="flex-1 py-3 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-bold">Close</button>
+        <button onclick="window.app.closeProfileModal(); window.swipeDeck.triggerSwipe('like');" class="flex-1 py-3 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md">Connect & Tour</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Lifestyle Compatibility Quiz Modal (F-03) -->
+  <div id="quiz-modal" class="modal-overlay">
+    <div class="bottom-sheet h-[90vh] p-4 flex flex-col overflow-y-auto no-scrollbar">
+      <div class="flex items-center justify-between pb-3 border-b border-[#eae8e2] shrink-0">
+        <div>
+          <h3 class="font-headline-sm text-base font-bold text-on-surface">Lifestyle Compatibility Quiz</h3>
+          <p class="font-body-sm text-[11px] text-on-surface-variant">Calibrate dealbreakers and habit preferences</p>
+        </div>
+        <button onclick="window.quizManager.closeQuizModal()" class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div id="quiz-questions-list" class="flex-1 flex flex-col gap-3 py-3 overflow-y-auto no-scrollbar">
+        <!-- Rendered by quiz.js -->
+      </div>
+
+      <div class="pt-3 border-t border-[#eae8e2] shrink-0">
+        <button onclick="window.quizManager.submitQuiz()" class="w-full py-3 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md hover:bg-primary-container transition-all">
+          Save & Recalculate Compatibility
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Pay via UPI Modal (F-09) -->
+  <div id="upi-payment-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col items-center text-center">
+      <div class="w-12 h-12 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center mb-2">
+        <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+      </div>
+      <h3 class="font-headline-sm text-base font-bold text-on-surface">Direct UPI Settle-Up</h3>
+      <p class="font-body-sm text-xs text-on-surface-variant max-w-[260px] mb-4">
+        Zero escrow fees. Pay directly to your flatmate via Google Pay, PhonePe or Paytm.
+      </p>
+
+      <div class="p-4 rounded-2xl bg-surface-container-low border border-[#eae8e2] flex flex-col items-center gap-2 w-full max-w-[260px] mb-4">
+        <span class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Settlement Amount</span>
+        <span id="upi-amount-display" class="font-numeric text-2xl font-black text-tertiary">₹2,100</span>
+        <span id="upi-id-display" class="font-label-caps text-xs text-secondary font-bold">kabir@okhdfcbank</span>
+        
+        <!-- Generated QR Code Mock for UPI -->
+        <div class="w-32 h-32 bg-white p-2 rounded-xl border border-[#eae8e2] flex items-center justify-center mt-1">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=kabir@okhdfcbank&pn=Kabir%20Mehta&am=2100&cu=INR" alt="UPI QR" class="w-full h-full object-contain" />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2 w-full">
+        <button onclick="window.homeOsManager.launchUpiDeepLink()" class="w-full py-3 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md hover:bg-primary-container transition-all">
+          Launch Installed UPI App (GPay/PhonePe)
+        </button>
+        <button onclick="window.homeOsManager.closeUpiModal()" class="w-full py-2.5 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Add Rule Modal (F-07) -->
+  <div id="add-rule-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col gap-3">
+      <h3 class="font-headline-sm text-base font-bold text-on-surface">Add House Rule to Constitution</h3>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Rule Title</label>
+        <input id="new-rule-title" type="text" placeholder="e.g. Living Room Shoe Rack Code" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Category</label>
+        <select id="new-rule-category" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary">
+          <option value="Habits & Boundaries">Habits & Boundaries</option>
+          <option value="Sleep & Noise">Sleep & Noise</option>
+          <option value="Kitchen & Food">Kitchen & Food</option>
+          <option value="Guests & Social">Guests & Social</option>
+          <option value="Utilities">Utilities</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Clause Details</label>
+        <textarea id="new-rule-desc" rows="3" placeholder="Explain the agreed expectation clearly..." class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary"></textarea>
+      </div>
+      <div class="flex gap-2 mt-2">
+        <button onclick="window.homeOsManager.closeAddRuleModal()" class="flex-1 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">Cancel</button>
+        <button onclick="window.homeOsManager.submitNewRule()" class="flex-1 py-2.5 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md">Submit for Approval</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Add Expense Split Modal (F-09) -->
+  <div id="add-expense-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col gap-3">
+      <h3 class="font-headline-sm text-base font-bold text-on-surface">Add Shared Expense</h3>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Expense Description</label>
+        <input id="expense-title" type="text" placeholder="e.g. Water Cans or Cook Bonus" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Total Amount (₹)</label>
+        <input id="expense-amount" type="number" placeholder="2000" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Split Type</label>
+        <select id="expense-split-type" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs focus:outline-none focus:border-secondary">
+          <option value="Equally (50-50)">Equally (50-50)</option>
+          <option value="Custom Split">Custom Split</option>
+        </select>
+      </div>
+      <div class="flex gap-2 mt-2">
+        <button onclick="window.homeOsManager.closeAddExpenseModal()" class="flex-1 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">Cancel</button>
+        <button onclick="window.homeOsManager.submitNewExpense()" class="flex-1 py-2.5 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md">Add to Ledger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Student / Freelancer Verification Modal -->
+  <div id="student-verify-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col gap-3">
+      <h3 class="font-headline-sm text-base font-bold text-on-surface">Student & Freelancer Verification</h3>
+      <p class="font-body-sm text-xs text-on-surface-variant">
+        No corporate work email required. Verify via university credentials, GSTIN, or professional portfolio.
+      </p>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Institution / Freelance Practice</label>
+        <input id="student-org-input" type="text" placeholder="e.g. MDI Gurgaon, Ashoka University or Independent" class="p-2.5 rounded-xl border border-[#eae8e2] text-xs" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="font-label-caps text-[10px] text-on-surface-variant uppercase font-bold">Student ID / Portfolio Link</label>
+        <input id="student-id-input" type="text" placeholder="e.g. ID-894723 or behance.net/..." class="p-2.5 rounded-xl border border-[#eae8e2] text-xs" />
+      </div>
+      <div class="flex gap-2 mt-2">
+        <button onclick="window.verifyManager.closeStudentVerifyModal()" class="flex-1 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">Cancel</button>
+        <button onclick="window.verifyManager.submitStudentVerification()" class="flex-1 py-2.5 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md">Verify Level 3</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Anti-Broker Report Modal -->
+  <div id="broker-report-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col gap-3">
+      <h3 class="font-headline-sm text-base font-bold text-error">Report Broker / Fraudulent Listing</h3>
+      <p class="font-body-sm text-xs text-on-surface-variant">
+        NestMate AI enforces zero brokerage. Accounts with 3 verified broker reports are automatically frozen.
+      </p>
+      <select class="p-2.5 rounded-xl border border-[#eae8e2] text-xs">
+        <option>Asked for brokerage / commission fee</option>
+        <option>Commercial PG masquerading as flatmate</option>
+        <option>Refused video tour / fake photos</option>
+      </select>
+      <textarea rows="2" placeholder="Provide details (phone, chat screenshot notes)..." class="p-2.5 rounded-xl border border-[#eae8e2] text-xs"></textarea>
+      <div class="flex gap-2 mt-2">
+        <button onclick="window.verifyManager.closeBrokerReportModal()" class="flex-1 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">Cancel</button>
+        <button onclick="window.verifyManager.submitBrokerReport()" class="flex-1 py-2.5 rounded-xl bg-error text-white font-label-badge text-xs font-bold shadow-md">Submit Report</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Seeker Corridor Waitlist Modal -->
+  <div id="waitlist-modal" class="modal-overlay">
+    <div class="bottom-sheet p-5 flex flex-col items-center text-center gap-2">
+      <div class="w-12 h-12 rounded-full bg-secondary-container text-secondary flex items-center justify-center">
+        <span class="material-symbols-outlined text-2xl">notifications</span>
+      </div>
+      <h3 class="font-headline-sm text-base font-bold text-on-surface">Join Corridor Priority Alert</h3>
+      <p class="font-body-sm text-xs text-on-surface-variant max-w-[280px]">
+        We release new verified flats in DLF Phase 3 and Sector 43 every morning at 9:00 AM.
+      </p>
+      <button onclick="window.app.submitWaitlist()" class="w-full py-3 rounded-xl bg-primary text-white font-label-badge text-xs font-bold shadow-md mt-2">
+        Alert Me First on WhatsApp
+      </button>
+      <button onclick="window.app.closeWaitlistModal()" class="w-full py-2 rounded-xl bg-surface-container text-on-surface font-label-badge text-xs font-semibold">
+        Dismiss
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/seed.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/homeOs.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/verify.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
